@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Domain", "SuntechIT.Demo.Domain\SuntechIT.Demo.Domain.csproj", "{929CF0BB-5C55-4C29-B409-822114C4F786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuntechIT.Demo.Infrastructure", "SuntechIT.Demo.Infrastructure\SuntechIT.Demo.Infrastructure.csproj", "{403C917B-0EDE-487A-8644-56C8219A43CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Infrastructure", "SuntechIT.Demo.Infrastructure\SuntechIT.Demo.Infrastructure.csproj", "{403C917B-0EDE-487A-8644-56C8219A43CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuntechIT.Demo.Presentation", "SuntechIT.Demo.Presentation\SuntechIT.Demo.Presentation.csproj", "{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Presentation", "SuntechIT.Demo.Presentation\SuntechIT.Demo.Presentation.csproj", "{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +50,7 @@ Global
 		{2CFA5A62-7E2D-405E-B709-0BA0FC2B1CA9} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 		{929CF0BB-5C55-4C29-B409-822114C4F786} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 		{403C917B-0EDE-487A-8644-56C8219A43CB} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
+		{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0FF8735E-04CC-44FE-A29D-5CC5B0C674E8}
