@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SuntechIT.Demo.Domain\SuntechIT.Demo.Domain.csproj" />
+    <ProjectReference Include="..\SuntechIT.Demo.Shared\SuntechIT.Demo.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

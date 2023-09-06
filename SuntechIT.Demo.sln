@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuntechIT.Demo.Presentation", "SuntechIT.Demo.Presentation\SuntechIT.Demo.Presentation.csproj", "{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuntechIT.Demo.Shared", "SuntechIT.Demo.Shared\SuntechIT.Demo.Shared.csproj", "{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{929CF0BB-5C55-4C29-B409-822114C4F786} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 		{403C917B-0EDE-487A-8644-56C8219A43CB} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 		{C4BD8D07-9FCD-47E6-877D-1ED89190CB7E} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
+		{FBB69D43-3173-4FEE-BCCA-9A8FD3C9ED2F} = {0FDB615E-4B86-4D00-A371-E056DFB5F7DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0FF8735E-04CC-44FE-A29D-5CC5B0C674E8}

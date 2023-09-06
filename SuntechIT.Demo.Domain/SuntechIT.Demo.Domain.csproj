@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Abstractions\" />
     <Folder Include="Exceptions\Base\" />
     <Folder Include="Primitives\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuntechIT.Demo.Shared\SuntechIT.Demo.Shared.csproj" />
   </ItemGroup>
 
 </Project>
