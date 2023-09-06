@@ -5,10 +5,18 @@ namespace SuntechIT.Demo.Domain.Entities.Customers
 {
     public class Customer : ITrackChanges
     {
-        public long Id { get; set; }
+        public Customer(string name, DateTime createdOn, DateTime updatedOn)
+        {
+            Name = name;
+            CreatedOn = createdOn;
+            UpdatedOn = updatedOn;
+        }
+
+        public long Id { get; private set; }
 
         [MaxLength(100)]
-        public string Name { get; set; }
+        [Required]
+        public string Name { get; private set; }
 
         public DateTime CreatedOn { get; set; }
 
