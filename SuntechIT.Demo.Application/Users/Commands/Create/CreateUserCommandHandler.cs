@@ -46,6 +46,7 @@ namespace SuntechIT.Demo.Application.Users.Commands.Create
             {
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                PhoneNumber = request.PhoneNumber,
                 UserName = request.Email
             };
 
