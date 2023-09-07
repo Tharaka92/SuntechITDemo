@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SuntechIT.Demo.Application;
 using SuntechIT.Demo.Infrastructure;
@@ -11,14 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
-
-// For Entity Framework
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DB")));
-
-// For Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
 
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
@@ -52,7 +42,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddApplication()
-    .AddInfrastructure()
+    .AddInfrastructure(configuration)
     .AddPresentation();
 
 var app = builder.Build();
@@ -77,8 +67,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
-using var scope = app.Services.CreateScope();
-await using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-await dbContext.Database.MigrateAsync();
+//Migrating any pending EF Core migrations and seeding data 
+await app.Services.SetupEntitiesAsync();
 
 app.Run();
