@@ -1,4 +1,4 @@
-﻿namespace SuntechIT.Demo.Application.Users.Login
+﻿namespace SuntechIT.Demo.Application.Users.Commands.Login
 {
     public class UserLoginRequest
     {

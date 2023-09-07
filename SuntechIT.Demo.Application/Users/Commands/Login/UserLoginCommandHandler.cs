@@ -4,11 +4,10 @@ using Ardalis.Result.FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using SuntechIT.Demo.Application.Abstractions;
-using SuntechIT.Demo.Application.Users.Create.Validators;
-using SuntechIT.Demo.Application.Users.Login.Validators;
+using SuntechIT.Demo.Application.Users.Commands.Login.Validators;
 using System.Security.Claims;
 
-namespace SuntechIT.Demo.Application.Users.Login
+namespace SuntechIT.Demo.Application.Users.Commands.Login
 {
     internal sealed class UserLoginCommandHandler : IRequestHandler<UserLoginCommand, Result<string>>
     {

@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using SuntechIT.Demo.Domain.Enums;
 
-namespace SuntechIT.Demo.Application.Users.Create.Validators
+namespace SuntechIT.Demo.Application.Users.Commands.Create.Validators
 {
     internal class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {

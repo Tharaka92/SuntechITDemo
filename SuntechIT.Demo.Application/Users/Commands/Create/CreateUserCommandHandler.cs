@@ -4,9 +4,9 @@ using Ardalis.Result.FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using SuntechIT.Demo.Application.Users.Create.Validators;
+using SuntechIT.Demo.Application.Users.Commands.Create.Validators;
 
-namespace SuntechIT.Demo.Application.Users.Create
+namespace SuntechIT.Demo.Application.Users.Commands.Create
 {
     internal sealed class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result>
     {

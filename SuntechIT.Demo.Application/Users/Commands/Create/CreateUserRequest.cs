@@ -1,11 +1,11 @@
 ﻿using SuntechIT.Demo.Domain.Enums;
 using System.Text.Json.Serialization;
 
-namespace SuntechIT.Demo.Application.Users.Create
+namespace SuntechIT.Demo.Application.Users.Commands.Create
 {
     public class CreateUserRequest
     {
-        public string Email { get; set;}
+        public string Email { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public Role Role { get; set; }

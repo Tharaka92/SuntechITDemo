@@ -2,7 +2,7 @@
 using MediatR;
 using SuntechIT.Demo.Domain.Enums;
 
-namespace SuntechIT.Demo.Application.Users.Create;
+namespace SuntechIT.Demo.Application.Users.Commands.Create;
 
 public sealed record CreateUserCommand(string Email,
     string Password,

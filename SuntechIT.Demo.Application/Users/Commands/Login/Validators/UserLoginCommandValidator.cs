@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace SuntechIT.Demo.Application.Users.Login.Validators
+namespace SuntechIT.Demo.Application.Users.Commands.Login.Validators
 {
     internal class UserLoginCommandValidator : AbstractValidator<UserLoginCommand>
     {
