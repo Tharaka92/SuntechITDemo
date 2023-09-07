@@ -1,4 +1,5 @@
-﻿using SuntechIT.Demo.Shared.Entity;
+﻿using SuntechIT.Demo.Domain.Entities.Projects;
+using SuntechIT.Demo.Shared.Entity;
 using System.ComponentModel.DataAnnotations;
 
 namespace SuntechIT.Demo.Domain.Entities.Customers
@@ -19,5 +20,7 @@ namespace SuntechIT.Demo.Domain.Entities.Customers
         public DateTime CreatedOn { get; set; }
 
         public DateTime UpdatedOn { get; set; }
+
+        public List<Project> Projects { get; private set; } 
     }
 }

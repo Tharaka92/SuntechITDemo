@@ -28,7 +28,9 @@ namespace SuntechIT.Demo.Infrastructure
                 .AddScoped<IDataSeeder, DataSeeder>()
                 .AddScoped<IJwtProvider, JwtProvider>()
                 .AddScoped<ICustomerRepository, CustomerRepository>()
-                .AddScoped<IUserRepository, UserRepository>();
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<IProjectRepository, ProjectRepository>()
+                .AddScoped<ITicketRepository, TicketRepository>();
 
             return services;
         }

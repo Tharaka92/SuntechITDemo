@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuntechIT.Demo.Domain.Repositories;
+using SuntechIT.Demo.Shared.Extensions;
+using System.Threading;
 
 namespace SuntechIT.Demo.Infrastructure.Repositories
 {
@@ -24,6 +26,21 @@ namespace SuntechIT.Demo.Infrastructure.Repositories
                     Email = u.Email, 
                     PhoneNumber = u.PhoneNumber 
                 }).FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        }
+
+        public async Task<List<IdentityUser>> GetUsers(long? customerId, long? projectId, CancellationToken cancellationToken)
+        {
+            return await _context.Projects
+                .Include(x => x.User)
+                .AsNoTracking()
+                .WhereIf(customerId.HasValue, x => x.CustomerId == customerId.Value)
+                .WhereIf(projectId.HasValue, x => x.Id == projectId.Value)
+                .Select(x => new IdentityUser
+                {
+                    Id = x.UserId,
+                    Email = x.User.Email,
+                    PhoneNumber = x.User.PhoneNumber
+                }).ToListAsync(cancellationToken);
         }
     }
 }

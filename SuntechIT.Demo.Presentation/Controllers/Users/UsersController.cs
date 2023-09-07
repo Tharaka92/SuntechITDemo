@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Users.Commands.Create;
 using SuntechIT.Demo.Application.Users.Commands.Login;
+using SuntechIT.Demo.Application.Users.Queries;
 using SuntechIT.Demo.Application.Users.Queries.GetUserById;
+using SuntechIT.Demo.Application.Users.Queries.GetUsers;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {
@@ -15,6 +17,15 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
     {
         public UsersController(ISender sender) : base(sender)
         {
+        }
+
+        [HttpGet]
+        [TranslateResultToActionResult]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<Result<List<UserResponse>>> GetUserById(long? customerId, long? projectId, CancellationToken cancellationToken)
+        {
+            var query = new GetUsersQuery(customerId, projectId);
+            return await _sender.Send(query, cancellationToken);
         }
 
         [HttpGet("{id}")]
