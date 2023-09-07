@@ -19,7 +19,7 @@ namespace SuntechIT.Demo.Application.Customers.Create
 
         public async Task Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
-            Customer customer = new(request.Name, DateTime.UtcNow, DateTime.UtcNow);
+            Customer customer = new(request.Name);
 
             _customerRepository.Add(customer);
 

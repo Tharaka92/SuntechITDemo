@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SuntechIT.Demo.Domain.Entities.Customers
 {
-    public class Customer : ITrackChanges
+    public class Customer : IAuditable
     {
-        public Customer(string name, DateTime createdOn, DateTime updatedOn)
+        public Customer(string name)
         {
             Name = name;
-            CreatedOn = createdOn;
-            UpdatedOn = updatedOn;
         }
 
         public long Id { get; private set; }

@@ -1,6 +1,6 @@
 ﻿namespace SuntechIT.Demo.Shared.Entity
 {
-    public interface ITrackChanges
+    public interface IAuditable
     {
         DateTime CreatedOn { get; set; }
 
