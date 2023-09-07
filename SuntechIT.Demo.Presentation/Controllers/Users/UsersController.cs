@@ -1,9 +1,12 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Users.Commands.Create;
 using SuntechIT.Demo.Application.Users.Commands.Login;
+using SuntechIT.Demo.Application.Users.Queries.GetUserById;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {
@@ -12,6 +15,15 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
     {
         public UsersController(ISender sender) : base(sender)
         {
+        }
+
+        [HttpGet("{id}")]
+        [TranslateResultToActionResult]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<Result<UserResponse>> GetUserById(string id, CancellationToken cancellationToken)
+        {
+            var query = new GetUserByIdQuery(id);
+            return await _sender.Send(query, cancellationToken);
         }
 
         [HttpPost]

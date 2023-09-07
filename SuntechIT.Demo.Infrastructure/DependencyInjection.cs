@@ -23,10 +23,12 @@ namespace SuntechIT.Demo.Infrastructure
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddScoped<ICustomerRepository, CustomerRepository>()
+            services
                 .AddScoped<IUnitOfWork, UnitOfWork>()
                 .AddScoped<IDataSeeder, DataSeeder>()
-                .AddScoped<IJwtProvider, JwtProvider>();
+                .AddScoped<IJwtProvider, JwtProvider>()
+                .AddScoped<ICustomerRepository, CustomerRepository>()
+                .AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

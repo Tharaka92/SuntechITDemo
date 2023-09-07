@@ -16,7 +16,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [TranslateResultToActionResult]
         public async Task<Result> CreateCustomer([FromBody] CreateCustomerRequest model, CancellationToken cancellationToken) 
         {
