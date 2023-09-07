@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuntechIT.Demo.Domain.Repositories;
 using SuntechIT.Demo.Shared.Extensions;
-using System.Threading;
 
 namespace SuntechIT.Demo.Infrastructure.Repositories
 {
@@ -33,8 +32,8 @@ namespace SuntechIT.Demo.Infrastructure.Repositories
             return await _context.Projects
                 .Include(x => x.User)
                 .AsNoTracking()
-                .WhereIf(customerId.HasValue, x => x.CustomerId == customerId.Value)
                 .WhereIf(projectId.HasValue, x => x.Id == projectId.Value)
+                .WhereIf(customerId.HasValue, x => x.CustomerId == customerId.Value)
                 .Select(x => new IdentityUser
                 {
                     Id = x.UserId,

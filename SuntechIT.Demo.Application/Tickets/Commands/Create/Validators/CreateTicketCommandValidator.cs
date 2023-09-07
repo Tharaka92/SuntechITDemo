@@ -16,7 +16,7 @@ namespace SuntechIT.Demo.Application.Tickets.Commands.Create.Validators
                 .WithMessage("Name length cannot exceed 100 characters");
 
             RuleFor(x => x.ProjectId)
-               .LessThanOrEqualTo(0)
+               .GreaterThan(0)
                .WithMessage("Invalid project id");
 
             RuleFor(x => x.Description)

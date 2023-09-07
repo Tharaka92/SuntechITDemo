@@ -16,7 +16,7 @@ namespace SuntechIT.Demo.Application.Projects.Commands.Create.Validators
                 .WithMessage("Name length cannot exceed 100 characters");
 
             RuleFor(x => x.CustomerId)
-               .LessThanOrEqualTo(0)
+               .GreaterThan(0)
                .WithMessage("Invalid customer id");
         }
     }

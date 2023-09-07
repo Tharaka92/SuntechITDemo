@@ -22,7 +22,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
         [HttpGet]
         [TranslateResultToActionResult]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<Result<List<UserResponse>>> GetUserById(long? customerId, long? projectId, CancellationToken cancellationToken)
+        public async Task<Result<List<UserResponse>>> GetUsers(long? customerId, long? projectId, CancellationToken cancellationToken)
         {
             var query = new GetUsersQuery(customerId, projectId);
             return await _sender.Send(query, cancellationToken);

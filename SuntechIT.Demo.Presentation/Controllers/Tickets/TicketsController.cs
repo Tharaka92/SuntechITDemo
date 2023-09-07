@@ -4,23 +4,23 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SuntechIT.Demo.Application.Projects.Commands.Create;
+using SuntechIT.Demo.Application.Tickets.Commands.Create;
 
-namespace SuntechIT.Demo.Presentation.Controllers.Customers
+namespace SuntechIT.Demo.Presentation.Controllers.Tickets
 {
-    [Route("api/v1/projects")]
-    public class ProjectsController : ApiController
+    [Route("api/v1/tickets")]
+    public class TicketsController : ApiController
     {
-        public ProjectsController(ISender sender) : base(sender)
+        public TicketsController(ISender sender) : base(sender)
         {
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [TranslateResultToActionResult]
-        public async Task<Result> CreateProject([FromBody] CreateProjectRequest model, CancellationToken cancellationToken) 
+        public async Task<Result> CreateTicket([FromBody] CreateTicketRequest model, CancellationToken cancellationToken) 
         {
-            var command = new CreateProjectCommand(model.Name, model.CustomerId);
+            var command = new CreateTicketCommand(model.Name, model.Description, model.ProjectId, model.UserId);
             return await _sender.Send(command, cancellationToken);
         }
     }
