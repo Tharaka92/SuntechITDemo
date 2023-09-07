@@ -4,6 +4,7 @@ using SuntechIT.Demo.Application;
 using SuntechIT.Demo.Infrastructure;
 using SuntechIT.Demo.Presentation;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -34,7 +35,8 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddControllers()
-    .AddApplicationPart(SuntechIT.Demo.Presentation.AssemblyReference.Assembly);
+    .AddApplicationPart(SuntechIT.Demo.Presentation.AssemblyReference.Assembly)
+    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
