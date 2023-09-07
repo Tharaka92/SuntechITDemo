@@ -4,23 +4,23 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SuntechIT.Demo.Application.Customers.Commands.Create;
+using SuntechIT.Demo.Application.Projects.Commands.Create;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {
-    [Route("api/v1/customers")]
-    public class CustomersController : ApiController
+    [Route("api/v1/projects")]
+    public class ProjectsController : ApiController
     {
-        public CustomersController(ISender sender) : base(sender)
+        public ProjectsController(ISender sender) : base(sender)
         {
         }
 
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [TranslateResultToActionResult]
-        public async Task<Result> CreateCustomer([FromBody] CreateCustomerRequest model, CancellationToken cancellationToken) 
+        public async Task<Result> CreateProject([FromBody] CreateProjectRequest model, CancellationToken cancellationToken) 
         {
-            var command = new CreateCustomerCommand(model.Name);
+            var command = new CreateProjectCommand(model.Name, model.CustomerId);
             return await _sender.Send(command, cancellationToken);
         }
     }

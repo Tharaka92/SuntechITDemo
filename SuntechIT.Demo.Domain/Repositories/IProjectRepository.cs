@@ -5,5 +5,6 @@ namespace SuntechIT.Demo.Domain.Repositories
     public interface IProjectRepository
     {
         void Add(Project project);
+        Task<Project?> GetProjectById(long id, CancellationToken cancellationToken);
     }
 }

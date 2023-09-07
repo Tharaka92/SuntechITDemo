@@ -9,11 +9,13 @@ namespace SuntechIT.Demo.Domain.Entities.Tickets
 {
     public class Ticket : IAuditable
     {
-        public Ticket(string name, string description, long projectId)
+        public Ticket(string name, string description, long projectId, string? userId, TicketStatus status)
         {
             Name = name;
             Description = description;
             ProjectId = projectId;
+            UserId = userId;
+            Status = status;
         }
 
         public long Id { get; private set; }

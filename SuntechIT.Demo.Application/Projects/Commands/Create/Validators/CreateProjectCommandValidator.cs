@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace SuntechIT.Demo.Application.Customers.Create.Validators
+namespace SuntechIT.Demo.Application.Projects.Commands.Create.Validators
 {
-    internal class CreateCustomerCommandValidator : AbstractValidator<CreateCustomerCommand>
+    internal class CreateProjectCommandValidator : AbstractValidator<CreateProjectCommand>
     {
-        public CreateCustomerCommandValidator()
+        public CreateProjectCommandValidator()
         {
             RuleFor(x => x.Name)
                 .NotNull()
@@ -14,6 +14,10 @@ namespace SuntechIT.Demo.Application.Customers.Create.Validators
             RuleFor(x => x.Name)
                 .MaximumLength(100)
                 .WithMessage("Name length cannot exceed 100 characters");
+
+            RuleFor(x => x.CustomerId)
+               .LessThanOrEqualTo(0)
+               .WithMessage("Invalid customer id");
         }
     }
 }

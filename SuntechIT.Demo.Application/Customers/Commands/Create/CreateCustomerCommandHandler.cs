@@ -2,12 +2,12 @@
 using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using MediatR;
-using SuntechIT.Demo.Application.Customers.Create.Validators;
+using SuntechIT.Demo.Application.Customers.Commands.Create.Validators;
 using SuntechIT.Demo.Domain.Entities.Customers;
 using SuntechIT.Demo.Domain.Repositories;
 using System;
 
-namespace SuntechIT.Demo.Application.Customers.Create
+namespace SuntechIT.Demo.Application.Customers.Commands.Create
 {
     internal sealed class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result>
     {
