@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using Ardalis.Result;
+using MediatR;
 
 namespace SuntechIT.Demo.Application.Customers.Create
 {
-    public sealed record CreateCustomerCommand(string Name) : IRequest;
+    public sealed record CreateCustomerCommand(string Name) : IRequest<Result>;
 }

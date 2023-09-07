@@ -1,11 +1,15 @@
 ﻿using Ardalis.GuardClauses;
+using Ardalis.Result;
+using Ardalis.Result.FluentValidation;
 using MediatR;
+using SuntechIT.Demo.Application.Customers.Create.Validators;
 using SuntechIT.Demo.Domain.Entities.Customers;
 using SuntechIT.Demo.Domain.Repositories;
+using System;
 
 namespace SuntechIT.Demo.Application.Customers.Create
 {
-    internal sealed class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand>
+    internal sealed class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result>
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -17,13 +21,23 @@ namespace SuntechIT.Demo.Application.Customers.Create
             _unitOfWork = Guard.Against.Null(unitOfWork);
         }
 
-        public async Task Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateCustomerCommandValidator();
+
+            var result = validator.Validate(request);
+            if (!result.IsValid)
+            {
+                return Result.Invalid(result.AsErrors());
+            }
+
             Customer customer = new(request.Name);
 
             _customerRepository.Add(customer);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return Result.Success();
         }
     }
 }
