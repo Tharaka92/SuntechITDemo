@@ -18,14 +18,15 @@ namespace SuntechIT.Demo.Infrastructure.Authentication
             _jwtOptions = Guard.Against.Null(jwtOptions.Value);
         }
 
-        public string Generate(IdentityUser user)
+        public string Generate(IdentityUser user, List<string> roles)
         {
-            var claims = new Claim[] 
+            var claims = new List<Claim> 
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(ClaimTypes.Role, "")
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
             };
+
+            roles.ForEach(x => claims.Add(new Claim(ClaimTypes.Role, x)));
 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)), SecurityAlgorithms.HmacSha256);

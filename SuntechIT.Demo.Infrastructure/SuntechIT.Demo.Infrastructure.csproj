@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SuntechIT.Demo.Application\SuntechIT.Demo.Application.csproj" />
     <ProjectReference Include="..\SuntechIT.Demo.Domain\SuntechIT.Demo.Domain.csproj" />
     <ProjectReference Include="..\SuntechIT.Demo.Shared\SuntechIT.Demo.Shared.csproj" />
   </ItemGroup>

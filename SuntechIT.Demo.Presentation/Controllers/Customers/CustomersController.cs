@@ -1,6 +1,8 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Customers.Create;
 
@@ -14,6 +16,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [TranslateResultToActionResult]
         public async Task<Result> CreateCustomer([FromBody] CreateCustomerRequest model, CancellationToken cancellationToken) 
         {

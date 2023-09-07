@@ -24,7 +24,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Customers
 
         [HttpPost("login")]
         [TranslateResultToActionResult]
-        public async Task<Result> Login([FromBody] UserLoginRequest model, CancellationToken cancellationToken)
+        public async Task<Result<string>> Login([FromBody] UserLoginRequest model, CancellationToken cancellationToken)
         {
             var command = new UserLoginCommand(model.Email, model.Password);
             return await _sender.Send(command, cancellationToken);

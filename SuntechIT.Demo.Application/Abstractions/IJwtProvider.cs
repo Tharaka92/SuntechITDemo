@@ -4,6 +4,6 @@ namespace SuntechIT.Demo.Application.Abstractions
 {
     public interface IJwtProvider
     {
-        string Generate(IdentityUser user);
+        string Generate(IdentityUser user, List<string> roles);
     }
 }
