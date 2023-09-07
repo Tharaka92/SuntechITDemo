@@ -3,7 +3,6 @@ using Ardalis.Result.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Customers.Create;
-using SuntechIT.Demo.Application.Users.Create;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {

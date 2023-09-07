@@ -3,6 +3,7 @@ using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using SuntechIT.Demo.Application.Users.Create.Validators;
 
 namespace SuntechIT.Demo.Application.Users.Create
@@ -10,10 +11,13 @@ namespace SuntechIT.Demo.Application.Users.Create
     internal sealed class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Result>
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<CreateUserCommandHandler> _logger;
 
-        public CreateUserCommandHandler(UserManager<IdentityUser> userManager)
+        public CreateUserCommandHandler(UserManager<IdentityUser> userManager,
+            ILogger<CreateUserCommandHandler> logger)
         {
             _userManager = Guard.Against.Null(userManager);
+            _logger = Guard.Against.Null(logger);
         }
 
         public async Task<Result> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -49,6 +53,7 @@ namespace SuntechIT.Demo.Application.Users.Create
 
             if (!createResult.Succeeded)
             {
+                _logger.LogError("Error occurred while creating the new user.");
                 return Result.Error("Error occurred while creating the new user.");
             }
 

@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SuntechIT.Demo.Application.Abstractions;
 using SuntechIT.Demo.Domain.Repositories;
+using SuntechIT.Demo.Infrastructure.Authentication;
 using SuntechIT.Demo.Infrastructure.Helpers;
 using SuntechIT.Demo.Infrastructure.Repositories;
 
@@ -23,7 +25,8 @@ namespace SuntechIT.Demo.Infrastructure
 
             services.AddScoped<ICustomerRepository, CustomerRepository>()
                 .AddScoped<IUnitOfWork, UnitOfWork>()
-                .AddScoped<IDataSeeder, DataSeeder>();
+                .AddScoped<IDataSeeder, DataSeeder>()
+                .AddScoped<IJwtProvider, JwtProvider>();
 
             return services;
         }
