@@ -8,7 +8,7 @@ using SuntechIT.Demo.Application.Tickets.Commands.Create;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Tickets
 {
-    [Route("api/v1/tickets")]
+    [Route("api/v1/ticket")]
     public class TicketsController : ApiController
     {
         public TicketsController(ISender sender) : base(sender)

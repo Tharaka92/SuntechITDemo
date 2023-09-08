@@ -34,7 +34,7 @@ namespace SuntechIT.Demo.Application.Tickets.Commands.Create
                 return Result.Invalid(result.AsErrors());
             }
 
-            var project = await _projectRepository.GetProjectById(request.ProjectId, cancellationToken);
+            var project = await _projectRepository.GetProjectById(request.ProjectId, true, cancellationToken);
 
             if (project is null)
             {

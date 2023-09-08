@@ -12,7 +12,7 @@ using SuntechIT.Demo.Application.Users.Queries.GetUsers;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {
-    [Route("api/v1/users")]
+    [Route("api/v1/user")]
     public class UsersController : ApiController
     {
         public UsersController(ISender sender) : base(sender)

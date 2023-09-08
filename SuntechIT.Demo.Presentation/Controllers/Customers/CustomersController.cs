@@ -8,7 +8,7 @@ using SuntechIT.Demo.Application.Customers.Commands.Create;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Customers
 {
-    [Route("api/v1/customers")]
+    [Route("api/v1/customer")]
     public class CustomersController : ApiController
     {
         public CustomersController(ISender sender) : base(sender)

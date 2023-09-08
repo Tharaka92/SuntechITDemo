@@ -1,6 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
-using SuntechIT.Demo.Domain.Entities.Customers;
 using SuntechIT.Demo.Domain.Entities.Projects;
 using SuntechIT.Demo.Domain.Repositories;
 
@@ -20,10 +19,16 @@ namespace SuntechIT.Demo.Infrastructure.Repositories
             _context.Set<Project>().Add(project);
         }
 
-        public async Task<Project?> GetProjectById(long id, CancellationToken cancellationToken)
+        public async Task<Project?> GetProjectById(long id, bool noTracking,CancellationToken cancellationToken)
         {
-            return await _context.Projects
-                .AsNoTracking()
+            var query = _context.Projects.AsQueryable();
+
+            if (noTracking) 
+            {
+                query = query.AsNoTracking();
+            }
+
+            return await query
                 .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
     }

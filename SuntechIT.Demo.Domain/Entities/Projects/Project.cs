@@ -36,5 +36,10 @@ namespace SuntechIT.Demo.Domain.Entities.Projects
         public IdentityUser? User { get; private set; }
 
         public List<Ticket> Tickets { get; private set; }
+
+        public void Assign(string userId) 
+        {
+            UserId = userId;
+        }
     }
 }

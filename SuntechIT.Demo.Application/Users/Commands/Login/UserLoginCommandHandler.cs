@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using SuntechIT.Demo.Application.Abstractions;
 using SuntechIT.Demo.Application.Users.Commands.Login.Validators;
-using System.Security.Claims;
 
 namespace SuntechIT.Demo.Application.Users.Commands.Login
 {
