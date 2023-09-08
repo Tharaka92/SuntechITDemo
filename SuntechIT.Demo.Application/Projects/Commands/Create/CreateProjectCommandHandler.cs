@@ -8,7 +8,7 @@ using SuntechIT.Demo.Domain.Entities.Projects;
 
 namespace SuntechIT.Demo.Application.Projects.Commands.Create
 {
-    internal class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, Result>
+    internal sealed class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, Result>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly ICustomerRepository _customerRepository;

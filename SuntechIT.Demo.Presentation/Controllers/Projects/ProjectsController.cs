@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Projects.Commands.Assign;
 using SuntechIT.Demo.Application.Projects.Commands.Create;
-using SuntechIT.Demo.Application.Users.Queries;
 using SuntechIT.Demo.Application.Projects.Queries.GetProjects;
 using SuntechIT.Demo.Shared.Extensions;
 using SuntechIT.Demo.Application.Projects.Queries;
 using SuntechIT.Demo.Application.Projects.Queries.GetProjectById;
+using SuntechIT.Demo.Application.Projects.Commands.Update;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Projects
 {
@@ -54,6 +54,15 @@ namespace SuntechIT.Demo.Presentation.Controllers.Projects
         public async Task<Result> AssignProject([FromBody] AssignProjectRequest model, CancellationToken cancellationToken)
         {
             var command = new AssignProjectCommand(model.ProjectId, model.UserId, User.GetCurrentUser());
+            return await _sender.Send(command, cancellationToken);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
+        [TranslateResultToActionResult]
+        public async Task<Result> UpdateProject(long id, [FromBody] UpdateProjectRequest model, CancellationToken cancellationToken)
+        {
+            var command = new UpdateProjectCommand(id, model.Name, User.GetCurrentUser());
             return await _sender.Send(command, cancellationToken);
         }
     }

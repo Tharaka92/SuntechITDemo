@@ -41,5 +41,10 @@ namespace SuntechIT.Demo.Domain.Entities.Projects
         {
             UserId = userId;
         }
+
+        public void Update(string name)
+        {
+            Name = name;
+        }
     }
 }
