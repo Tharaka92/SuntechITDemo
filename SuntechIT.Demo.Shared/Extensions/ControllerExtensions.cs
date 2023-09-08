@@ -7,12 +7,12 @@ namespace SuntechIT.Demo.Shared.Extensions
     {
         public static string GetUserId(this ClaimsPrincipal user)
         {
-            return user.FindFirstValue("sub");
+            return user.FindFirstValue(ClaimTypes.NameIdentifier);
         }
 
         public static CurrentUser? GetCurrentUser(this ClaimsPrincipal user)
         {
-            string firstValue = user.FindFirstValue("sub");
+            string firstValue = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (firstValue.IsNullOrWhiteSpace())
                 return null;
@@ -20,8 +20,8 @@ namespace SuntechIT.Demo.Shared.Extensions
             return new CurrentUser()
             {
                 Id = firstValue,
-                Email = user.FindFirstValue("email"),
-                Role = user.FindFirstValue("role")
+                Email = user.FindFirstValue(ClaimTypes.Email),
+                Role = user.FindFirstValue(ClaimTypes.Role)
             };
         }
 

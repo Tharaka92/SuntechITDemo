@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Projects.Commands.Assign;
 using SuntechIT.Demo.Application.Projects.Commands.Create;
+using SuntechIT.Demo.Application.Users.Queries;
+using SuntechIT.Demo.Application.Projects.Queries.GetProjects;
+using SuntechIT.Demo.Shared.Extensions;
+using SuntechIT.Demo.Application.Projects.Queries;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Projects
 {
@@ -14,6 +18,15 @@ namespace SuntechIT.Demo.Presentation.Controllers.Projects
     {
         public ProjectsController(ISender sender) : base(sender)
         {
+        }
+
+        [HttpGet]
+        [TranslateResultToActionResult]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<Result<List<ProjectResponse>>> GetProjects(long? customerId, string? userId, CancellationToken cancellationToken)
+        {
+            var query = new GetProjectsQuery(customerId, userId, User.GetCurrentUser());
+            return await _sender.Send(query, cancellationToken);
         }
 
         [HttpPost]
