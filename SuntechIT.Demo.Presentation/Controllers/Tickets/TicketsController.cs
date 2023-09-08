@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuntechIT.Demo.Application.Tickets.Commands.Create;
+using SuntechIT.Demo.Shared.Extensions;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Tickets
 {
@@ -20,7 +21,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Tickets
         [TranslateResultToActionResult]
         public async Task<Result> CreateTicket([FromBody] CreateTicketRequest model, CancellationToken cancellationToken) 
         {
-            var command = new CreateTicketCommand(model.Name, model.Description, model.ProjectId, model.UserId);
+            var command = new CreateTicketCommand(model.Name, model.Description, model.ProjectId, model.UserId, User.GetCurrentUser());
             return await _sender.Send(command, cancellationToken);
         }
     }

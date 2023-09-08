@@ -31,7 +31,7 @@ namespace SuntechIT.Demo.Infrastructure.Repositories
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<Project?> GetProjectById(long id, bool noTracking, CancellationToken cancellationToken)
+        public async Task<Project?> GetProjectById(long id, bool noTracking, CurrentUser currentUser, CancellationToken cancellationToken)
         {
             var query = _context.Projects.AsQueryable();
 
@@ -41,6 +41,7 @@ namespace SuntechIT.Demo.Infrastructure.Repositories
             }
 
             return await query
+                .WhereIf(currentUser.IsNormalUser, x => x.UserId == currentUser.Id)
                 .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
     }

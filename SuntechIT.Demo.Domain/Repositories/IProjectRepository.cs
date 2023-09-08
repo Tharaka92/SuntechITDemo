@@ -7,6 +7,6 @@ namespace SuntechIT.Demo.Domain.Repositories
     {
         void Add(Project project);
         Task<List<Project>> GetProjects(long? customerId, string? userId, CurrentUser currentUser, CancellationToken cancellationToken);
-        Task<Project?> GetProjectById(long id, bool noTracking, CancellationToken cancellationToken);
+        Task<Project?> GetProjectById(long id, bool noTracking, CurrentUser currentUser, CancellationToken cancellationToken);
     }
 }

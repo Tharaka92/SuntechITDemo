@@ -10,6 +10,7 @@ using SuntechIT.Demo.Application.Users.Queries;
 using SuntechIT.Demo.Application.Projects.Queries.GetProjects;
 using SuntechIT.Demo.Shared.Extensions;
 using SuntechIT.Demo.Application.Projects.Queries;
+using SuntechIT.Demo.Application.Projects.Queries.GetProjectById;
 
 namespace SuntechIT.Demo.Presentation.Controllers.Projects
 {
@@ -29,6 +30,15 @@ namespace SuntechIT.Demo.Presentation.Controllers.Projects
             return await _sender.Send(query, cancellationToken);
         }
 
+        [HttpGet("{id}")]
+        [TranslateResultToActionResult]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<Result<ProjectResponse>> GetProjectById(long id, CancellationToken cancellationToken)
+        {
+            var query = new GetProjectByIdQuery(id, User.GetCurrentUser());
+            return await _sender.Send(query, cancellationToken);
+        }
+
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "SuperAdmin")]
         [TranslateResultToActionResult]
@@ -43,7 +53,7 @@ namespace SuntechIT.Demo.Presentation.Controllers.Projects
         [TranslateResultToActionResult]
         public async Task<Result> AssignProject([FromBody] AssignProjectRequest model, CancellationToken cancellationToken)
         {
-            var command = new AssignProjectCommand(model.ProjectId, model.UserId);
+            var command = new AssignProjectCommand(model.ProjectId, model.UserId, User.GetCurrentUser());
             return await _sender.Send(command, cancellationToken);
         }
     }

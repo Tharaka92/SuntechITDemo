@@ -34,15 +34,11 @@ namespace SuntechIT.Demo.Application.Projects.Commands.Assign
                 return Result.Invalid(result.AsErrors());
             }
 
-            var project = await _projectRepository.GetProjectById(request.ProjectId, false, cancellationToken);
+            var project = await _projectRepository.GetProjectById(request.ProjectId, false, request.CurrentUser, cancellationToken);
 
             if (project is null)
             {
-                var validationErrorList = new List<ValidationError>()
-                {
-                    new ValidationError{ ErrorCode = "400", ErrorMessage = "Invalid project" }
-                };
-
+                var validationErrorList = new List<ValidationError>();
                 return Result.Invalid(validationErrorList);
             }
 
@@ -50,11 +46,7 @@ namespace SuntechIT.Demo.Application.Projects.Commands.Assign
 
             if (user is null)
             {
-                var validationErrorList = new List<ValidationError>()
-                {
-                    new ValidationError{ ErrorMessage = "Invalid user" }
-                };
-
+                var validationErrorList = new List<ValidationError>();
                 return Result.Invalid(validationErrorList);
             }
 
@@ -62,11 +54,7 @@ namespace SuntechIT.Demo.Application.Projects.Commands.Assign
 
             if (!userRoles.Contains(Role.Normal.ToString()))
             {
-                var validationErrorList = new List<ValidationError>()
-                {
-                    new ValidationError{ ErrorCode = "400", ErrorMessage = "Invalid role" }
-                };
-
+                var validationErrorList = new List<ValidationError>();
                 return Result.Invalid(validationErrorList);
             }
 
