@@ -19,7 +19,7 @@ But for the demo purposes I have only used CQRS for every endpoint.
 
 Presentation layer is decoupled from the web api project to prevent violating separation of concerns. For example, to avoid referencing the db context directly inside the web api project.
 
-I used below thrid party libraries to avoid re-inventing the wheel;
+I used below third party libraries to avoid re-inventing the wheel;
 
 - [Ardalis.GuardClauses](https://www.nuget.org/packages/Ardalis.GuardClauses)
 - [Ardalis.Result](https://www.nuget.org/packages/Ardalis.Result)
